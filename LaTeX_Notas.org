@@ -185,3 +185,74 @@
     Existe una gran variedad de comando, algunos generan salida como \LaTeX,
     otros cambian la tipografia o las etiquetas, generalmente los nombres de
     los comandos son acorde a su proposito.
+
+*** LaTeX te entiende
+    Latex entiende lo que has escrito en el editor, modifiquemos un poco
+    el ejemplo anterior.
+
+    % Hola mundo en LaTeX
+    \documentclass[a4paper, 13pt]{article}
+    
+    \begin{document}
+    \title{Hola mundo, parte 2}
+    \author{Miguel Angel Gordi\'an}
+    \date{Marzo 23, 2012}
+    \maketitle
+    
+    \section{¿Qu\'e es esto?}
+    Hola mundo en \LaTeX
+    
+    Este
+    es
+    nuestro
+    Segundo Documento
+
+
+    Contiene dos parrafos. La primera line de un parrafo debera
+    de ser indetada, pero no sera indentada cuando se encuentre 
+    % Fin del parrafo
+    \end{document}
+    despues de una cabacera.
+
+
+**** ¿Qué paso?
+     Aunque se insertaron espacios de mas, la distancia entre las
+     palabras en el documento se salida se mantienen igual.
+     La explicación de este fenomeno es que LaTeX trata multiples
+     espacios como si fuera uno solo.
+     Los saltos de linea tienen el mismo efecto y son tratados 
+     como un solo espacio
+
+     Otro fenomeno de la misma naturalesa es que una linea en blanco
+     denota el fin de un parrafo. Como los espacios, multiples lineas
+     en blanco son tratados como si fueran una.
+
+     Resumiendo, los espacios separan palabras, las lineas en blanco
+     separan parrafos.
+
+**** El caracter %
+     Como has podido notar desde el primer ejemplo, hay una linea que 
+     comentado anteriormente todo lo que existe en el preambulo no genera
+     salida al documento pero y en el segundo ejemplo aparece otro similar 
+     pero esta vez dentro del environment(ambiente) document, pero no genero
+     contiene el simbolo de %, seguido de texto pero como ya hemos
+     alguna salida. ¿Qué significa esto?
+
+     La respuesta a esta interrogante es que el signo de porcentaje marca el
+     inicio de un comentario, todo lo que siga despues del signo de porcentaje
+     hasta el salto de linea sera tomado como comentario y no generara alguna
+     salida. Los comentarios son ignorados por LaTeX y esto posibilita mantener
+     notas en el documento.
+
+     Los comentarios son comunmente utilizados en templates para indicarle al
+     usuario lo que realiza el template en ciertos lugares
+     Algo a notar es que el fin de linea, que normalmente se comporta como
+     espacio, debera ser ignorado despues del signo de porcentaje.
+
+     Si el signo de porcentaje se utiliza para indicar un comentario, ¿Que
+     pasara si queremos escribir cifras en formato de porcentaje?
+
+
+
+
+     

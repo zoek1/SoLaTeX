@@ -4,34 +4,34 @@
    es un sistema de preparación de documentos.
    Latex no es un procesador de texto, pero es usado lenguaje de marcado
    de documentos.
-
 ** Licencia
-   LaTeX es libre, es software open source. LaTeX fue originalmente
-   escrito por leslie lamport y es basado en TeX, el composicitor de 
-   documentos de Donald Knuth.
 
+   LaTeX es libre, es software open source. LaTeX fue originalmente
+   escrito por leslie lamport y es basado en TeX, el composicitor de
+   documentos de Donald Knuth.
 ** Beneficio
+
    LaTeX esta especialmente provisto para documentos cientificos y tecnicos.
-   La superior composición tipografica para formulas matematicas es 
+   La superior composición tipografica para formulas matematicas es
    legendaria.
-   
+
    Otra notable fortaleza de LaTex son sus niveles de referencia cruzada, su
    numeración automatica y  generación de listas de contenido, figuras,
    tablas, indices, glosarios y bibliografía.
 
-   Gracias a la flexibilidad existe una gran cantidad de templates para cartas, 
-   presentaciones, partituras, y notaciones para juegos. 
+   Gracias a la flexibilidad existe una gran cantidad de templates para cartas,
+   presentaciones, partituras, y notaciones para juegos.
 
-   Otros de los beneficios son su impresionante alta calidad de sus estilos 
+   Otros de los beneficios son su impresionante alta calidad de sus estilos
    predefinidos apoyandose en su inteligente formateo del texto, pero permite
    al usuario libre libertad de modificación.
 
 ** Separación de la forma y el contenido.
-   Uno de los principios LaTeX, no debe distraerse demasiado por formatear el 
+   Uno de los principios LaTeX, no debe distraerse demasiado por formatear el
    documentos. Normalmente, el autor se enfoca en el contenido y el formato
    un ejemplo, en vez de escribir el title de un capitulo en grande y negrita,
    solo tienes que decirle LaTeX que es la cabesera de una sección.
-   La ventaja es que puedes permitir que LaTeX decida el diseño para la 
+   La ventaja es que puedes permitir que LaTeX decida el diseño para la
    cabezera o puedes definir como debera de mostrarse y todo puede ser definido
    una vez y aplicarse a todo el documento.
 
@@ -43,20 +43,19 @@
    LaTeX esta disponible para casi todos los sistemas opertivos, como son Linux,
    Mac OS X, Windows y otros mas. El formato del archivo es texto plano, el cual
    puede ser leido y editado en todos los sistemas operativos. LaTeX debera de
-   generar la misma salida en todos los sistemas, Aunque existen diferents 
+   generar la misma salida en todos los sistemas, Aunque existen diferents
    paquetes de software, que son llamados Districuciones TeX.
 
-   LaTeX no tiene una interfaz grafica , esta es una de las razones por las que 
-   LaTeX es muy portable. 
+   LaTeX no tiene una interfaz grafica , esta es una de las razones por las que
+   LaTeX es muy portable.
 
    LaTeX puede genera un PDF, esto es que puede ser leido e impreso en muchas
-   computadoras, adicionalmente genera salida en los formatos DVI, PostScript y 
+   computadoras, adicionalmente genera salida en los formatos DVI, PostScript y
    html.
 
    Tomando en cuanta todo esto podemos decir que LaTex es portable en tres
    maneras, la fuente, la implementación y la salida.
 
-      
 ** Inicio en LaTeX
 *** EL primer paso
     El primer programa siempre es importante.
@@ -66,16 +65,16 @@
 
     % Hola mundo en LaTeX
     \documentclass[a4paper, 13pt]{article}
-    
+
     \begin{document}
     \title{Hola mundo}
     \author{Miguel Angel Gordi\'an}
     \date{Marzo 23, 2012}
     \maketitle
-    
+
     \section{saluda}
     Hola mundo en \LaTeX
-    
+
     \end{document}
 
 **** Compilación
@@ -86,14 +85,13 @@
      latex para generar una salida a dvi.
 
       $ latex holamundo.tex
-    
 
 *** Que ha pasado
     Anteriormente habiamos hablado hacerca de un formateo logico.
     Tomando el codigo anterior nostros le decimos a LaTeX que:
 
     * Nuestro documentos es de tipo articulo. Este debera ser
-      impreso en un tamaño de papel A4 usando un tamaño de letra 
+      impreso en un tamaño de papel A4 usando un tamaño de letra
       de 11 puntos.
 
     * El titulo es Hola mundo
@@ -104,49 +102,49 @@
 
     * Concerniente al contenido del documento:
       - Inicia con un titulo
-      
+
       - La primera seccion debera tener la cabecera "Saludame"
 
       - El texto "hola mundo desde \LaTeX".
 
-    Nota: En el archivo no se especifico el tamaño de letra del titulo 
-    o la cabezera, ni se especifico algo con formato en negrita o 
+    Nota: En el archivo no se especifico el tamaño de letra del titulo
+    o la cabezera, ni se especifico algo con formato en negrita o
     centrado. El formateo fue hecho por LaTeX sin embargo eres libre
     de decirle a LaTeX como debera de lucir el documento.
-    
+
 *** Disección el hola mundo
     Un documento en LaTeX no es independiente, nomalmente el documento
     es basado en un versatil template.
     Un template fundamental es llamado una clase, este proveé de
-    caracteristicas personalizables y usualmente es creado para un 
-    proposito en especifico. Existen clases para libros, articulos de 
+    caracteristicas personalizables y usualmente es creado para un
+    proposito en especifico. Existen clases para libros, articulos de
     periodico, cartas, presentaciones, posters, y muchos mas.
-    Cientos de clases pueden ser encontrados en los archivos de 
+    Cientos de clases pueden ser encontrados en los archivos de
     internet, pero tambien algunos ya estan en tu computadora si ya
-    instalaste Tex Live. En el codigo enterior nosotros escojimos la 
+    instalaste Tex Live. En el codigo enterior nosotros escojimos la
     clase article, una clase estandard en LaTeX adecuada para pequeños
     documentos.
 
     La primera linea del codigo inicia con \documentclass. Esta palabra
     inicia con diagonal invertida, tales palabras son llamadas comando.
-    Los comandos se utilizan para especificar la clase o el estado de 
-    algunas propiedades del documento: 
-    
+    Los comandos se utilizan para especificar la clase o el estado de
+    algunas propiedades del documento:
+
     * \title: Especifica el titulo del documento
-      
+
     * \author: Especifica el nombre del autor
-      
+
     * \date: Especifica la fecha para la creacion del documento.
 
-    La primera parte del documento es llamado preambulo(preamble) del 
+    La primera parte del documento es llamado preambulo(preamble) del
     documento. En el preambulo es donde escojemos la clase,
     especificamos algunas propiedades.
 
-    El comando \begin{document} marca el final del preambulo y el inicio del 
-    documento. \end{document} marca el final del documento. Todo lo que 
-    exista despues del comando, debera de ser ignorado por LaTeX. 
+    El comando \begin{document} marca el final del preambulo y el inicio del
+    documento. \end{document} marca el final del documento. Todo lo que
+    exista despues del comando, debera de ser ignorado por LaTeX.
 
-    El par de comandos \begin y \end forman un marco al cual se les da el 
+    El par de comandos \begin y \end forman un marco al cual se les da el
     nombre de ambiente(environment).
 
     En el codigo anterior, se uso el comando \maketitle que imprime el titulo,
@@ -154,12 +152,12 @@
     produjo un texto mas grande y en negrita que el texto normal.
     En el environment del documento se escribio un saludo, este debera se ser
     impreso, al contrario del preambulo que nunca producira alguna salida.
-    
+
 *** Comandos
-    Los comando en LaTeX comienzan con una diagonal inversa, seguidos 
-    por letras mayusculas o minusculas. 
+    Los comando en LaTeX comienzan con una diagonal inversa, seguidos
+    por letras mayusculas o minusculas.
     Los comando en LaTeX usualmente son nombrados con letras en minuscula
-    y un nombre descriptivo. Tambien ha excepciones, algunos de los 
+    y un nombre descriptivo. Tambien ha excepciones, algunos de los
     comandos consisten de la diagonal inversa y un caracter especial.
 
     Los comandos pueden tener argumentos, estos le son pasados mediante
@@ -170,7 +168,7 @@
     \command
 
     ó:
-    
+
     \command{argument}
 
     ó:
@@ -179,7 +177,7 @@
 
     Cada uno puede contener varios argumentos, los argumentos en llaves son
     obligatorios. Si un comando es definido para recivir un argumento, uno
-    tiene que ser provisto. Un ejemplo, al llamar al comando \documentclass 
+    tiene que ser provisto. Un ejemplo, al llamar al comando \documentclass
     debera de fallar si no se especifica el nombre de una clase valida.
 
     Existe una gran variedad de comando, algunos generan salida como \LaTeX,
@@ -189,19 +187,19 @@
 *** LaTeX te entiende
     Latex entiende lo que has escrito en el editor, modifiquemos un poco
     el ejemplo anterior.
-
     % Hola mundo en LaTeX
     \documentclass[a4paper, 13pt]{article}
-    
+
     \begin{document}
     \title{Hola mundo, parte 2}
     \author{Miguel Angel Gordi\'an}
+
     \date{Marzo 23, 2012}
     \maketitle
-    
+
     \section{¿Qu\'e es esto?}
     Hola mundo en \LaTeX
-    
+
     Este
     es
     nuestro
@@ -209,7 +207,7 @@
 
 
     Contiene dos parrafos. La primera line de un parrafo debera
-    de ser indetada, pero no sera indentada cuando se encuentre 
+    de ser indetada, pero no sera indentada cuando se encuentre
     % Fin del parrafo
     \end{document}
     despues de una cabacera.
@@ -220,7 +218,7 @@
      palabras en el documento se salida se mantienen igual.
      La explicación de este fenomeno es que LaTeX trata multiples
      espacios como si fuera uno solo.
-     Los saltos de linea tienen el mismo efecto y son tratados 
+     Los saltos de linea tienen el mismo efecto y son tratados
      como un solo espacio
 
      Otro fenomeno de la misma naturalesa es que una linea en blanco
@@ -230,12 +228,13 @@
      Resumiendo, los espacios separan palabras, las lineas en blanco
      separan parrafos.
 
-**** El caracter %
-     Como has podido notar desde el primer ejemplo, hay una linea que 
-     comentado anteriormente todo lo que existe en el preambulo no genera
-     salida al documento pero y en el segundo ejemplo aparece otro similar 
+
+**** El carácter %
+     Como has podido notar desde el primer ejemplo, hay una linea que
+     comentado anteriormente todo lo que existe en el preámbulo no genera
+     salida al documento pero y en el segundo ejemplo aparece otro similar
      pero esta vez dentro del environment(ambiente) document, pero no genero
-     contiene el simbolo de %, seguido de texto pero como ya hemos
+     contiene el símbolo de %, seguido de texto pero como ya hemos
      alguna salida. ¿Qué significa esto?
 
      La respuesta a esta interrogante es que el signo de porcentaje marca el
@@ -244,7 +243,7 @@
      salida. Los comentarios son ignorados por LaTeX y esto posibilita mantener
      notas en el documento.
 
-     Los comentarios son comunmente utilizados en templates para indicarle al
+     Los comentarios son comúnmente utilizados en templates para indicarle al
      usuario lo que realiza el template en ciertos lugares
      Algo a notar es que el fin de linea, que normalmente se comporta como
      espacio, debera ser ignorado despues del signo de porcentaje.
@@ -252,7 +251,51 @@
      Si el signo de porcentaje se utiliza para indicar un comentario, ¿Que
      pasara si queremos escribir cifras en formato de porcentaje?
 
+*** Caracteres especiales.
+    Los textos comúnmente contienen letras en mayúscula, minúsculas, números,
+    signos de puntuación y tu puedes tener lo mismo en Látex simplemente
+    escribiéndolo cuando estés en el editor. Sin embargo algunos caracteres
+    están reservados para los comandos en LaTeX, lo que significa es que no
+    pueden llegar a ser usados directamente.
+
+    Ya se han usado caracteres que son comandos de LaTeX, como el signo de
+    porcentaje y las llaves, pero si se quiere escribir estos caracteres en
+    el documento LaTeX no te deja morir solo si no que te provee de comandos
+    para imprimir este tipo de caracteres.
+
+**** Código
+
+     \documentclass{article}
+     \begin{document}
+     Decalraci\'on \#1:
+     50\% de 100\% es \$50.
+
+     Otros caracteres especiales son \&, \_, \{ y \}.
+
+     \end{document}
+
+**** Devuelta a la disección
+     La solución que nos ofrece LaTeX, es colocar una
+     diagonal inversa antes del símbolo especial,
+     convirtiendo el carácter especial en un comando
+     cuyo único propósito es imprimir ese símbolo.
+
+     Un caso curioso es el de la diagonal inversa,
+     con la explicación anterior se pensaría que para
+     mostrar la diagonal se haría mediante el comando
+     "\\", pero no es así, se hace mediante el comando
+     \textbackslash. La labor del comando "\\" es
+     frecuentemente utilizada como un atajo que indica
+     un salto de linea.
+     Es un poco extraño, que los saltos de linea ocurren
+     frecuentemente mientras que las diagonales inversas
+     son raramente usadas en el documento generado, de ahí
+     que se escogiera este atajo.
+
+     Existe una gran variedad de símbolos que podemos usar
+     para formulas matemáticas, notación de ajedrez, signos
+     zodiacales, y mas. Pero por lo retomaremos mas tarde.
 
 
+*** Formateando al texto
 
-     

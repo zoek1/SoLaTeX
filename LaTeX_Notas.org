@@ -372,3 +372,103 @@
      semántico puesto que hace referencia a el significado, no solo a
      la apariencia
 
+**** Fuentes
+     Imaginemos que queremos escribir un articulo acerca de donde
+     podemos obtener recursos para LaTeX en internet. Para tener un
+     titulo o una cabecera legible debemos de usar una fuente sin
+     elementos decorativos, el cuerpo del texto deberá de contener una
+     dirección de internet, para hacer hincapié en el link usaremos
+     una fuente del tipo de las maquinas de escribir.
+
+
+***** Código
+      \documentclass{article}
+      \begin{document}
+      \section{\textsf{Recursos de \LaTeX\ en internet}}
+      El mejor lugar para descargar software relacionado con LaTeX es CTAN.
+      Su dirección es \texttt{http://www.ctan.org}.
+      \end{document}
+
+***** Disección
+      En el código anterior se han escrito mas comandos de fuentes. Al
+      colocar el comando \textsf, le hemos dicho a LaTeX que use la
+      fuente sans-serif para la cabecera de la sección. También se ha
+      escrito el comando \texttt para usar una fuente similiar a la de
+      las maquinas de escribir aplicada a la direción
+      electronica. Ambos comandos pueden ser usados como los
+      anteriores comandos de fuente.
+
+      Las letras que forman parte del standard de LaTeX son llamadas
+      serif, y presentan pequeños detalles decorativos al final de los
+      trazos de una letra.  Serif deberá mejorar la legibilidad y
+      guiar a los ojos del usuario a lo largo de linea. Por lo tanto
+      es muy usada en el cuerpo del documento. Tales fuentes son
+      también llamadas fuentes Roman, la cual tiene asociado el
+      comando \textrm — la fuente predefinida con serifs.
+
+      Las cabeceras de sección son frecuentemente hechas sin serifs,
+      en ves de ella utilizan una fuente llamada sans-serif. Esta
+      fuente también es una excelente elección para texto mostrado en
+      una pantalla debido a que provee una mejor legibilidad en poca
+      resolución.  Tal vez quieras elegir una fuente sans-serif cuando
+      escribas un e-book.
+
+      Si cada letra de una fuente tiene el mismo ancho, la fuente es
+      llamada monoespaciada o typewriter.  La fuente typewriter fue
+      usada en los inicios de la computadora, hoy en día aun son
+      utilizadas principalmente para escribir código de programas de
+      computadora, tanto cuando se imprimen como cuando se esta en un
+      editor de texto.  En el caso de mostrar codigo de programas o de
+      LaTeX, considera usar una fuente typewriter.
+
+**** Intercambiando fuentes
+     Colocar demasiado texto dentro del argumento de un comando puede
+     ser grotesco y puede que algunas veces queramos establecer
+     algunas propiedades de la fuente para largos pasajes de
+     texto. Así que LaTeX provee mas comandos, pero estos tendrán la
+     labor de actuar como switchs.
+
+***** Código
+      \documentclass{article}
+      \begin{document}
+      \section{\sffamily Recursos de \LaTeX\ en internet}
+      El mejor lugar para descargar software relacionado con LaTeX es CTAN.
+      Su dirección es \ttfamlily http://www.ctan.org\rmfamily.
+      \end{document}
+
+
+***** Disección
+      Al colocar el comando \sffamily, le decimos a LaTeX que cambia a
+      la fuente sans-serif, este cambio fue hecho dentro del
+      argumento, y solo es valido ahí.
+
+      También se uso el comando \ttfamily para cambiar a la fuente
+      typewriter, la fuente deberá de ser usada hasta justo antes del
+      punto, puesto que volvemos a cambiar de fuente, en este caso
+      regresamos a la fuente Roman mediante el comando \rmfamily.
+
+      Este tipo de comandos no causan alguna salida, pero afectaran al
+      texto que lo prosigue. Llamaremos a este tipo de comandos
+      declaraciones.
+
+      Veamos con mayor detalle el numero de la sección, este en un
+      dígito con serif, el cual no guarda relación con el resto de la
+      cabecera que es sans-serif. Por otra parte, cambiar la fuente
+      dentro del comando sección no luce bien. La mejor manera es
+      declarar una vez la fuente para las cabecera de sección y que se
+      aplique para todo el documento.
+
+**** Sumario de los comandos y las declaraciones.
+     | \textrm{...}     | \rmfamily   | roman family      |
+     | \textsf{...}     | \sffamily   | sans-serif family |
+     | \texttt{...}     | \ttfamily   | typewriter family |
+     | \textbf{...}     | \bfseries   | bold face         |
+     | \textmd{...}     | \mdseries   | medium            |
+     | \textit{...}     | \itshape    | italic shape      |
+     | \textsl{...}     | \slshape    | slanted shape     |
+     | \textsc{...}     | \scshape    | Small Caps Shape  |
+     | \textup{...}     | \upshape    | uprigth shape     |
+     | \textnormal{...} | \normalfont | default font      |
+
+
+     La declaración correspondiente a \emph es \em

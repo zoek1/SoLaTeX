@@ -69,10 +69,11 @@
 
     El primer programa siempre es importante.
 
-**** Codigo
+**** Código
 
     Empezemos por un ya clasico hola mundo en LaTeX
 
+    #+BEGIN_SRC latex
     % Hola mundo en LaTeX
     \documentclass[a4paper, 13pt]{article}
 
@@ -86,16 +87,21 @@
     Hola mundo en \LaTeX
 
     \end{document}
+    #+END_SRC
 
 **** Compilación
 
      pdflatex mas el nombre del archivo para dar una salidad a pdf.
 
+    #+BEGIN_SRC bash
       $ pdflatex holamundo.tex
+    #+END_SRC
 
      latex para generar una salida a dvi.
 
+    #+BEGIN_SRC bash
       $ latex holamundo.tex
+    #+END_SRC
 
 *** Que ha pasado
     Anteriormente habiamos hablado hacerca de un formateo logico.
@@ -206,6 +212,8 @@
 
     Latex entiende lo que has escrito en el editor, modifiquemos un
     poco el ejemplo anterior.
+
+    #+BEGIN_SRC latex
     % Hola mundo en LaTeX
     \documentclass[a4paper, 13pt]{article}
 
@@ -227,9 +235,10 @@
 
     Contiene dos parrafos. La primera line de un parrafo debera
     de ser indetada, pero no sera indentada cuando se encuentre
+    despues de una cabecera.
     % Fin del parrafo
     \end{document}
-    despues de una cabacera.
+    #+END_SRC
 
 **** ¿Qué paso?
 
@@ -287,7 +296,7 @@
     te provee de comandos para imprimir este tipo de caracteres.
 
 **** Código
-
+    #+BEGIN_SRC latex
      \documentclass{article}
      \begin{document}
      Decalraci\'on \#1:
@@ -296,6 +305,7 @@
      Otros caracteres especiales son \&, \_, \{ y \}.
 
      \end{document}
+    #+END_SRC
 
 **** Devuelta a la disección
      La solución que nos ofrece LaTeX, es colocar una
@@ -329,7 +339,7 @@
 ***** Código
      A continuación enfatizaremos un palabra importante en el texto y veremos
      como hacer que las palabras se muestren en negrita, itálica o cursiva.
-
+     #+BEGIN_SRC latex
      \documentclass{article}
      \begin{document}
      El texto puede ser \emph{enfatizado}.
@@ -341,6 +351,7 @@
 
      \emph{Veamos como luce un \emph{\'enfasis} anidado.}
      \end{document}
+     #+END_SRC
 
 ***** Disección
      En primera instancia podemos observar que el primer comando es el
@@ -382,13 +393,14 @@
 
 
 ***** Código
+    #+BEGIN_SRC latex
       \documentclass{article}
       \begin{document}
       \section{\textsf{Recursos de \LaTeX\ en internet}}
       El mejor lugar para descargar software relacionado con LaTeX es CTAN.
       Su dirección es \texttt{http://www.ctan.org}.
       \end{document}
-
+    #+END_SRC
 ***** Disección
       En el código anterior se han escrito mas comandos de fuentes. Al
       colocar el comando \textsf, le hemos dicho a LaTeX que use la
@@ -429,13 +441,15 @@
      labor de actuar como switchs.
 
 ***** Código
+
+    #+BEGIN_SRC latex
       \documentclass{article}
       \begin{document}
       \section{\sffamily Recursos de \LaTeX\ en internet}
       El mejor lugar para descargar software relacionado con LaTeX es CTAN.
-      Su dirección es \ttfamlily http://www.ctan.org\rmfamily.
+      Su dirección es \ttfamlily http://www.ctan.org\rmfamily\rmfamily.
       \end{document}
-
+    #+END_SRC
 
 ***** Disección
       Al colocar el comando \sffamily, le decimos a LaTeX que cambia a
@@ -459,6 +473,8 @@
       aplique para todo el documento.
 
 **** Sumario de los comandos y las declaraciones.
+     | Comando          | Declaración | Significado       |
+     |------------------+-------------+-------------------|
      | \textrm{...}     | \rmfamily   | roman family      |
      | \textsf{...}     | \sffamily   | sans-serif family |
      | \texttt{...}     | \ttfamily   | typewriter family |
@@ -472,3 +488,102 @@
 
 
      La declaración correspondiente a \emph es \em
+
+*** Delimitando el efecto de los comandos
+    En el capitulo anterior, se revirtio el efecto de \ttfamily para
+    escribir el punto con el tipo de letra predefinido para el texto
+    comun mediante el comando \rmfamily. Pudimos haber asegurado
+    regresar al tipo de letra base mediante el comando \normalfont,
+    sin embargo existe una forma mas sencilla.
+
+**** Código
+     Es tiempo de pasar nuevamente al código, esta vez utilizaremos
+     las llaves para decirle a LaTeX, donde comenzar a aplicar un
+     comando y donde detenerse.
+
+     #+BEGIN_SRC latex
+     \document{article}
+     \begin{document}
+     {sffamily
+     El texto puede ser {\em enfatizado}.
+
+     Además pueden estar en {\itshape itálica} o también ser
+     {\bfserief negritas}, {\slshape inclinada} o compuesta en
+     {\scshape versalita}.
+
+     Tales comandos puedes estar {\itshape \bfseries anidados}.}
+
+     Por ultimo {\em Observa como se muestra el {\em enfatizado}
+     cuando esta anidado}
+     \end{document}
+     #+END_SRC
+
+**** Disección
+     Cuando colocamos el símbolo de llave abierta, el siguiente
+     comando \sffamily solo tendrá efecto en el texto hasta el
+     correspondiente cierre de llave. Se puede observar que la llave
+     que cierra se encuentra al final del código resaltado. El texto
+     resaltado muestra el área de código donde el comando \sffamily es
+     valido.
+
+     En el código anterior se remplazo cada comando por su correspondiente
+     declaración. Si recordemos, \em es la declaración del comando \emph.
+     Adicionalmente encerramos cada declaración y el texto afectado mediante
+     llaves.
+
+     Para una mayor comprensión, cuando colocamos la llave abierta le
+     decimos a LaTeX que iniciamos un *grupo*[fn:1]. Los comandos siguientes
+     a la llave son validos, es decir tendrán efecto sobre el
+     siguiente texto hasta que se encuentre con la llave que cierra,
+     haciendo que LaTeX detenga el efecto de los comandos contenidos
+     en el grupo.  El rango donde un comando tiene efecto es conocido
+     como *scope*(alcance).
+
+     Un elemento importante es que los grupos pueden estar anidados.
+
+     Texto Normal, {\sffamily texto sans serif {\bfseries y negrita}}.
+
+     Se debe ser cuidadoso al momento de cerrar los grupos, ya que
+     debe de concordar.
+
+
+*** Tamaños de fuente
+    En este apartado mostraremos los comandos de tamaño de texto  disponible
+    en LaTeX por defecto.
+
+**** Código
+     #+BEGIN_SRC latex
+     \documentclass{article}
+     \begin{document}
+     \noindent\tiny ¡Hemos \scriptsize de iniciar \footsize \small de
+     lo pequeño, \normalize hasta \large agrandarse \Larger y
+     agrandarse mas, \huge hasta lo Enorme y \Huge giganteco!
+     \end{document}
+     #+END_SRC
+
+**** Disección
+     En primera instancia, se uso el comando \noindent. Este comando suprime la
+     indentación del parrafo. Después de ello, utilizamos las 10 declaraciones de
+     tamaño, comenzando desdes la mas pequeña \tiny y terminando con las mas grande
+     \Huge. Estos comando no toman argumentos, por lo tanto hay que usar llaves
+     para delimitar su efecto, como se hablo antes.
+
+     El actual resultado del tamaño de la fuente depende de la fuente base. Esto
+     es que si en tu documento tienes una fuente base de 12pt, entonces \tiny
+     deberá de ser el texto mas grande que si la fuente fuese de 10pt.
+
+     Debemos de ver algunas relaciones, si usas \footsize, obtendrás texto del
+     mismo tamaño del que LaTeX utiliza para las notas al pie. Otra relación es
+     la de usar \scriptsize, si se desea crear un estilo, con el mismo tamaño
+     de letra que usa LaTeX para los subscripts y superscripts.
+
+     Normalmente, las declaraciones del texto son usadas únicamente en declaraciones
+     de macros en el preámbulo, justo como se aplica a los demás comandos de fuente.
+     Sera muy raro que encuentres comandos de tamaño o de estilo en cuerpos de texto
+     bien hechos, excepto pasajes de diseño libres como titulo de paginas.
+
+
+
+...
+[fn:1] Las llaves que encierran a los argumentos de un comando, no
+forman un grupo.

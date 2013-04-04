@@ -582,11 +582,11 @@
      bien hechos, excepto pasajes de diseño libres como titulo de paginas.
 
 *** El uso de ambientes
-    Cuando se usan demasiadas declaraciones y se agrupan mediante llaves para
-    delimitar su contenido, se tienden a cometer el error de no cerrar las
-    llaves correspondientes. En esos casos es cuando llega el auxilio de los
-    ambientes(environmets), los cuales forman también grupos, pero genera una
-    mayor legibilidad en el código.
+    Cuando se usan demasiadas declaraciones y se agrupan mediante
+    llaves para delimitar su contenido, se tienden a cometer el error
+    de no cerrar las llaves correspondientes. En esos casos es cuando
+    llega el auxilio de los ambientes(environmets), los cuales forman
+    también grupos, pero genera una mayor legibilidad en el código.
 
 **** Código
    #+BEGIN_SRC latex
@@ -602,25 +602,50 @@
    #+END_SRC
 
 **** Disección
-     Veamos que en vez de colocar el comando \huge, escribimos \begin{huge},
-     ambos tienen el mismo efecto de cambiar a un tamaño de letra grande.
-     Tambien se escribio \end{huge}, el cual le informa a LaTeX que debera
-     dejar de aplicar el efecto. Desde este punto en adelante, el texto tendra
-     el mismo tamaño que tenia antes de \begin{huge}.
+     Veamos que en vez de colocar el comando \huge,
+     escribimos \begin{huge}, ambos tienen el mismo efecto de cambiar
+     a un tamaño de letra grande.  Tambien se escribio \end{huge}, el
+     cual le informa a LaTeX que debera dejar de aplicar el
+     efecto. Desde este punto en adelante, el texto tendrá el mismo
+     tamaño que tenia antes de \begin{huge}.
 
-     Dentro del ambiente, usamos la declracion \bfseries. Notese que el efecto
-     de esta declaración termina junto con la del ambiente.
+     Dentro del ambiente, usamos la declaración \bfseries. Notese que
+     el efecto de esta declaración termina junto con la del ambiente.
 
-     La linea en blanco antes de el \end{huge} denota el fin de un parrafo. [fn:2]
-     \bigskip, Usando este comando evitamos que se genere algun espacio vertical.
+     La linea en blanco antes de el \end{huge} denota el fin de un
+     párrafo. [fn:2] \bigskip, Usando este comando evitamos que se
+     genere algún espacio vertical.
 
-     *Importante:* Para cada declaración, existe su ambiente corespondiente, el
-     cual lleva el mismo nombre solo se excluye la diagonl inversa.
+     *Importante:* Para cada declaración, existe su ambiente
+     correspondiente, el cual lleva el mismo nombre solo se excluye la
+     diagonal inversa.
 
-     Usando ambientes en vez de llavez puede hacer de un codigo complejo uno
-     mas legible y entendible.
+     Usando ambientes en vez de llaves puede hacer de un código
+     complejo uno mas legible y entendible.
 
+*** Creando comandos
+    Si frecuentemente usas el mismo termino en tu documento, sera
+    molesto escribirlo una y otra vez. Pero surgiría la duda del ¿qué
+    pasaría si decidiéramos cambiar su formato? Para evitar la
+    búsqueda y el remplazo en todo el documento, LaTeX permite definir
+    tus comandos en el preámbulo y darles un nombre. Suelen también
+    ser conocidos como macros. Cuando te encuentres en el documento
+    solo tendrás que usar el nombre que definiste en aquellos
+    elementos que quieras cambiar sus forma ó componentes. Y todo esto
+    escrito solo una vez, en la definición de la macro. Esto deberá de
+    tener efecto en cualquier parte del documento donde se defina.
 
+**** Código
+     Definamos un comando que imprima las palabras TeX Users Group
+
+     #+BEGIN_SRC latex
+\documentclass{article}
+\newcommand{\TUG}{TeX User Group}
+\begin{document}
+    \section{El \TUG}
+     El \TUG es una organización para gente interesada en \TeX\ o \LaTeX.
+\end{document}
+     #+END_SRC
 
 
 ...

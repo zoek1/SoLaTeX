@@ -501,7 +501,7 @@
      las llaves para decirle a LaTeX, donde comenzar a aplicar un
      comando y donde detenerse.
 
-     #+BEGIN_SRC latex
+#+BEGIN_SRC latex
      \document{article}
      \begin{document}
      {sffamily
@@ -516,7 +516,7 @@
      Por ultimo {\em Observa como se muestra el {\em enfatizado}
      cuando esta anidado}
      \end{document}
-     #+END_SRC
+#+END_SRC
 
 **** Disección
      Cuando colocamos el símbolo de llave abierta, el siguiente
@@ -546,25 +546,24 @@
      Se debe ser cuidadoso al momento de cerrar los grupos, ya que
      debe de concordar.
 
-
 *** Tamaños de fuente
     En este apartado mostraremos los comandos de tamaño de texto  disponible
     en LaTeX por defecto.
 
 **** Código
-     #+BEGIN_SRC latex
-     \documentclass{article}
-     \begin{document}
-     \noindent\tiny ¡Hemos \scriptsize de iniciar \footsize \small de
-     lo pequeño, \normalize hasta \large agrandarse \Larger y
-     agrandarse mas, \huge hasta lo Enorme y \Huge giganteco!
-     \end{document}
-     #+END_SRC
+#+BEGIN_SRC latex
+\documentclass{article}
+\begin{document}
+    \noindent\tiny ¡Hemos \scriptsize de iniciar \footsize \small de
+    lo pequeño, \normalize hasta \large agrandarse \Larger y
+    agrandarse mas, \huge hasta lo Enorme y \Huge giganteco!
+\end{document}
+#+END_SRC
 
 **** Disección
-     En primera instancia, se uso el comando \noindent. Este comando suprime la
      indentación del parrafo. Después de ello, utilizamos las 10 declaraciones de
      tamaño, comenzando desdes la mas pequeña \tiny y terminando con las mas grande
+     En primera instancia, se uso el comando \noindent. Este comando suprime la
      \Huge. Estos comando no toman argumentos, por lo tanto hay que usar llaves
      para delimitar su efecto, como se hablo antes.
 
@@ -582,8 +581,54 @@
      Sera muy raro que encuentres comandos de tamaño o de estilo en cuerpos de texto
      bien hechos, excepto pasajes de diseño libres como titulo de paginas.
 
+*** El uso de ambientes
+    Cuando se usan demasiadas declaraciones y se agrupan mediante llaves para
+    delimitar su contenido, se tienden a cometer el error de no cerrar las
+    llaves correspondientes. En esos casos es cuando llega el auxilio de los
+    ambientes(environmets), los cuales forman también grupos, pero genera una
+    mayor legibilidad en el código.
+
+**** Código
+   #+BEGIN_SRC latex
+\documentclass{article}
+\begin{document}
+    \begin{huge}
+         \bfseries
+         Un pequeño ejemplo
+    \end{huge}
+    \bigskip
+    Esto es otro pequeño ejemplo.
+\end{document}
+   #+END_SRC
+
+**** Disección
+     Veamos que en vez de colocar el comando \huge, escribimos \begin{huge},
+     ambos tienen el mismo efecto de cambiar a un tamaño de letra grande.
+     Tambien se escribio \end{huge}, el cual le informa a LaTeX que debera
+     dejar de aplicar el efecto. Desde este punto en adelante, el texto tendra
+     el mismo tamaño que tenia antes de \begin{huge}.
+
+     Dentro del ambiente, usamos la declracion \bfseries. Notese que el efecto
+     de esta declaración termina junto con la del ambiente.
+
+     La linea en blanco antes de el \end{huge} denota el fin de un parrafo. [fn:2]
+     \bigskip, Usando este comando evitamos que se genere algun espacio vertical.
+
+     *Importante:* Para cada declaración, existe su ambiente corespondiente, el
+     cual lleva el mismo nombre solo se excluye la diagonl inversa.
+
+     Usando ambientes en vez de llavez puede hacer de un codigo complejo uno
+     mas legible y entendible.
+
+
 
 
 ...
+
 [fn:1] Las llaves que encierran a los argumentos de un comando, no
 forman un grupo.
+
+[fn:2] Habras notado que la linea blanca que denota el fin de parrafo se
+encuentra antes de que la fuente cambia de tamaño y no despues, esto es debido
+a que LaTeX calcula el espacio para interlineado dependiendo del tamaño actual
+de la fuente.

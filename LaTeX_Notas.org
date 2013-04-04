@@ -648,37 +648,40 @@
      #+END_SRC
 
 **** Disección
-     \newcommand es quien hace la magia. El primer argumento es el nombre que le
-     asignaremos al comando, el segundo argumento es el texto que pondremos en
-     el documento.
+     \newcommand es quien hace la magia. El primer argumento es el
+     nombre que le asignaremos al comando, el segundo argumento es el
+     texto que pondremos en el documento.
 
-     Ahora cuando escribamos \TUG en nuestro documento, el nombre completo debera
-     de mostrarse. Si en el futuro decidiéramos cambiar el nombre o su formato, solo
-     tendríamos que modificar la linea de l definición del comando y el comando
-     sera valido en cualquier parte del documento.
+     Ahora cuando escribamos \TUG en nuestro documento, el nombre
+     completo deberá de mostrarse. Si en el futuro decidiéramos
+     cambiar el nombre o su formato, solo tendríamos que modificar la
+     linea de l definición del comando y el comando sera valido en
+     cualquier parte del documento.
 
-     Tal vez queramos usar comandos para formatear el texto cuando se defina el comando.
-     Digamos que queremos cambiar el formato del texto a versalita en todas sus ocurrencias.
-     Solo tendremos que modificar la definición:
+     Tal vez queramos usar comandos para formatear el texto cuando se
+     defina el comando.  Digamos que queremos cambiar el formato del
+     texto a versalita en todas sus ocurrencias.  Solo tendremos que
+     modificar la definición:
 
      =\newcommand{\TUG}{\textsc{TeX User Group}}=
 
      También se uso el comando \TeX, el cual solo imprime el nombre
-     del sistema básico de composición como en su logo. Esta es una abreviación
-     del comando como la que hemos escrito así como también la es \LaTeX.
-     Note que se ha colocado una diagonal inversa después de \TeX.
-     El siguiente espacio separa el comando del texto siguiente y no sera mostrado
-     en la salida. Usando la diagonal inversa seguida de un espacio en blanco, forzara
-     al espacio a aparecer en la salida de otra manera sera ignorado.
-
+     del sistema básico de composición como en su logo. Esta es una
+     abreviación del comando como la que hemos escrito así como
+     también la es \LaTeX.  Note que se ha colocado una diagonal
+     inversa después de \TeX.  El siguiente espacio separa el comando
+     del texto siguiente y no sera mostrado en la salida. Usando la
+     diagonal inversa seguida de un espacio en blanco, forzara al
+     espacio a aparecer en la salida de otra manera sera ignorado.
 
 
 *** Espacio despues de los comandos
-    Dejar un espacio después de un comando mediante la diagonal inversa puede ser
-    fácil olvidado. ¿Podríamos modificar el comando para automatizarlo?
-    Tareas que no son soportadas directamente por LaTeX, puedes ser resueltas
-    mediante el uso de paquetes(packages). Los cuales son una colección de estilos
-    y comandos.
+    Dejar un espacio después de un comando mediante la diagonal
+    inversa puede ser fácil olvidado. ¿Podríamos modificar el comando
+    para automatizarlo?  Tareas que no son soportadas directamente por
+    LaTeX, puedes ser resueltas mediante el uso de
+    paquetes(packages). Los cuales son una colección de estilos y
+    comandos.
 
 **** Código
      Cargaremos el paquete xspace. El único proposito de este paquete es cubrir
@@ -716,6 +719,39 @@
 
      Definiendo y usando comandos, aseguras el tener consistencia en
      todo el documento.
+
+*** Comando con argumentos
+    Imagina que tu texto contiene muchas palabras que quieres que se muestren
+    en negritas. Si usas el comando en todas aquellas palabras \textbf, ¿qué
+    pasaria si despues decides cambiar todas aquellas palabras a itálica o algun
+    otro tipo o frma de fuente? Sera molesto cambiar cada una de las
+    declaraciones. LaTeX no te dejara morir solo y su manera de ayudarte es
+    permitirte crear tus propios comandos.
+
+**** Código
+     Definiremos un comando, pero esta vez haremos uso de los argumentos, los
+     cuales contendran nuestra palabra clave.
+
+#+BEGIN_SRC latex
+\documentclass{article}
+\newcommand{\palabraclave}[1]{\textbf{#1}}
+\begin{document}
+\palabraclave{Agrupar} mediante llaves limita el
+\palabraclave{alcanze} de las \palabraclave{declaraciones}.
+\end{document}
+#END_SRC
+
+**** Disección
+     Ha sido sencillo, ahora veamos que ha ocurrido. El numero 1
+     dentro de los corchetes indica el numero de comandos que
+     requerimos. El #1 deberá de ser remplazado por el valor del
+     primer argumento, el #2 deberá de remplazar al segundo y así
+     sucesivamente.
+
+     Si en estos momentos se deseara modificar la apariencia a itálica
+     de todas las palabras que estan sujetas a la declaracion
+     \palabraclave, solo modifica su definición y el cambio sera
+     global.
 
 
 

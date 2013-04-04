@@ -643,9 +643,80 @@
 \newcommand{\TUG}{TeX User Group}
 \begin{document}
     \section{El \TUG}
-     El \TUG es una organización para gente interesada en \TeX\ o \LaTeX.
+     El \TUG\ es una organización para gente interesada en \TeX\ o \LaTeX.
 \end{document}
      #+END_SRC
+
+**** Disección
+     \newcommand es quien hace la magia. El primer argumento es el nombre que le
+     asignaremos al comando, el segundo argumento es el texto que pondremos en
+     el documento.
+
+     Ahora cuando escribamos \TUG en nuestro documento, el nombre completo debera
+     de mostrarse. Si en el futuro decidiéramos cambiar el nombre o su formato, solo
+     tendríamos que modificar la linea de l definición del comando y el comando
+     sera valido en cualquier parte del documento.
+
+     Tal vez queramos usar comandos para formatear el texto cuando se defina el comando.
+     Digamos que queremos cambiar el formato del texto a versalita en todas sus ocurrencias.
+     Solo tendremos que modificar la definición:
+
+     =\newcommand{\TUG}{\textsc{TeX User Group}}=
+
+     También se uso el comando \TeX, el cual solo imprime el nombre
+     del sistema básico de composición como en su logo. Esta es una abreviación
+     del comando como la que hemos escrito así como también la es \LaTeX.
+     Note que se ha colocado una diagonal inversa después de \TeX.
+     El siguiente espacio separa el comando del texto siguiente y no sera mostrado
+     en la salida. Usando la diagonal inversa seguida de un espacio en blanco, forzara
+     al espacio a aparecer en la salida de otra manera sera ignorado.
+
+
+
+*** Espacio despues de los comandos
+    Dejar un espacio después de un comando mediante la diagonal inversa puede ser
+    fácil olvidado. ¿Podríamos modificar el comando para automatizarlo?
+    Tareas que no son soportadas directamente por LaTeX, puedes ser resueltas
+    mediante el uso de paquetes(packages). Los cuales son una colección de estilos
+    y comandos.
+
+**** Código
+     Cargaremos el paquete xspace. El único proposito de este paquete es cubrir
+     esta necesidad.
+
+     #+BEGIN_SRC latex
+\documentclass{article}
+\usepackage{xspace}
+\newcommand{\TUG}{TeX User Group\xspace}
+\begin{document}
+    \section{El \TUG}
+     El \TUG\ es una organización para gente interesada en \TeX\ o \LaTeX.
+\end{document}
+    #+END_SRC
+
+**** Disección
+     \usepackage{xspace} le dice a LaTeX que cargue el paquete llamado
+     xspace y lea todas las definiciones contenidas en el. Después de
+     este comando, podrás utilizad todas las definiciones contenidas
+     en el paquete.
+
+     Al paquete provee el comando \xspace que inserta un caracter
+     dependiendo del siguiente carácter: Si es un punto, una coma, un
+     signo de admiración o interrogación o comillas no deberá de
+     insertar un espacio, pero si es una letra el carácter siguiente
+     entonces si insertara un espacio.
+
+     Imaginemos que has mencionado a el TUG demasiadas veces en tu
+     documento y te gustaría la idea de usar estilo del logo de TeX en
+     tu definición.  Como has visto anteriormente no es necesario que
+     cambies grandes cantidades de elementos en el documento, solo
+     necesitas modificar un única vez el preámbulo.
+
+     =\newcommand{\TUG}{\textsc{\TeX\ User Group}\xspace}=
+
+     Definiendo y usando comandos, aseguras el tener consistencia en
+     todo el documento.
+
 
 
 ...

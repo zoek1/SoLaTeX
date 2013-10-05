@@ -739,7 +739,7 @@
 \palabraclave{Agrupar} mediante llaves limita el
 \palabraclave{alcanze} de las \palabraclave{declaraciones}.
 \end{document}
-#END_SRC
+#+END_SRC
 
 **** Disección
      Ha sido sencillo, ahora veamos que ha ocurrido. El numero 1
@@ -776,7 +776,7 @@
 \keyword{Agrupando} con llaves delimitamos el
 \keyword{alcanze} de la \keyword{\itshape}{declaración}.
 \end{document}
-#END_SRC
+#+END_SRC
     
 **** Disección
      Veamos denuevo en la linea de la marca de negrita. Usando [\bfserief],
@@ -832,6 +832,7 @@
 \begin{document}
 \parbox{3cm}{TUG es un acronimo. Significa \TeX\ User Group.}
 \end{document}
+#+END_SRC
 
 **** Disección
      

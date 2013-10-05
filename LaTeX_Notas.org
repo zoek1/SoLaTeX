@@ -753,8 +753,88 @@
      \palabraclave, solo modifica su definición y el cambio sera
      global.
 
+*** Usando argumentos opcionales
+    En un ejemplo anterior, usamos \\newcoomand con dos argumentos.
+    En el ejemplo enterior, usamos tres argumentos. El argumento
+    adicional ha sido puesto entre corchetes. Esa es la manera en 
+    que definimos *argumentos opcionales*: estos argumentos puden
+    estar o ser omitidos. Si se omiten, ellos deberan tener un valor
+    por defecto. Ya lo hemos notado con el comando \\documentclass.
+    Pero ¿cómo podemos definir un comando con argumentos opcionales 
+    nosotros mismos?
+    
+**** Código
 
+     Usaremos de nuevo el comando \\newcommand, esta vez con un parametro
+     opcional concerniente al formato y un argumento necesario para la
+     palabra clave.
 
+#+BEGIN_SRC latex
+\documentclass{article}
+\newcommand{\Keyword}[2][\bfseries]{{#1#2}}
+\begin{document}
+\keyword{Agrupando} con llaves delimitamos el
+\keyword{alcanze} de la \keyword{\itshape}{declaración}.
+\end{document}
+#END_SRC
+    
+**** Disección
+     Veamos denuevo en la linea de la marca de negrita. Usando [\bfserief],
+     hemos introducido un parametro opcional. Nos referimos a el con #1.
+     Su valor por defecto es \bfserief. Desde que usamos esta vez una declaración,
+     hemos agregado un par de llaves para asegurarnos que unicamente la 
+     palabra clave sea afectada por la declaración.
+
+     Despues en el documento, dimos [\itshape] a \keyword cambiando el formato por
+     defecto a italica.
+
+     Esta es la definición de \newcommand
+
+     \newcommand{command}[arguments][optional]{definition}
+
+     command: El nombre de el nuevo comando, comienza con una diagonal
+     inversa seguida por letras ya sean mayusculas o minusculas, o una
+     diagonal inversa seguida por un simbolo que no sea una letra.
+     El nombre debera ser diferente de uno definido anteriormente y no
+     esta permitido iniciar con \end.
+
+     arguments: Un entero del rango  1-9, es el numero de argumentos de 
+     el nuevo comando. Si este elemento se omite no tendra argumentos el
+     comando.
+
+     optional: Si esta presente, entonces el primero de los argumentos 
+     debera ser opcional con un valor por defecto dado aqui. De otra
+     manera todos los argumentos seran obligatorios.
+
+     definition: Cada ocurrencia del comando debera ser remplazada por 
+     definition y cada ocurrencia de la forma #n debera ser remplazada 
+     por nth argumento.
+
+     \newcommand es nuestra clave para introducir un formato logico. Deberemos
+     evitar usar los comandos de fuentes de \LaTeX dentro del documento - estas
+     en el camino correcto si ellos aparecen unicamente en el preambulo del
+     documento. Usa \newcommand para crear estilos para palabras clave, ejemplos
+     de código, direcciones web, nombres, notas, anuncions o diferentes textos
+     enfatizados. Asi podrmos lograr una estructura consitente, ¡usar estilos es
+     la clave!
+
+*** Usando cajas para limitar el ancho del parrafo
+
+    No siempre querremos excribir texto solo de deracha a izquierda a traves de
+    ancho de la hoja. Algunas veses, nos gustaria tener un texto pequeño, por ejemplo
+    cuando pongamos texto y una ilustración uno al lado del otro.
+
+**** Código
+     Vamos a explicar el acronimo de TUG en un texto de 3cm de ancho
+
+#+BEGIN_SRC latex
+\documentclass{article}
+\begin{document}
+\parbox{3cm}{TUG es un acronimo. Significa \TeX\ User Group.}
+\end{document}
+
+**** Disección
+     
 ...
 
 [fn:1] Las llaves que encierran a los argumentos de un comando, no
